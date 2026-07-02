@@ -20,4 +20,22 @@ cmake --build build -j
 ```
 전체 한 번에: `ARCH=87 ./build_all.sh`
 
+## CLI (모든 벤치 공통)
+```
+--size,    -n N     문제 크기
+--iters,   -i N     측정 반복
+--variant, -a KEY   특정 레벨/변형만 실행 (예: --variant L2)   ← 레벨별 프로파일용
+--list,    -l       변형 목록 (harness 벤치)
+--help,    -h
+```
+
+## ncu 프로파일 (레벨별, 수강생 시연용)
+레벨(L0..Ln)은 커널 이름이 달라 ncu 가 자동 분리 → 리포트 하나서 레벨별 메트릭 비교.
+```bash
+./build_all.sh          # 먼저 전체 빌드
+sudo ./ncu_all.sh       # 모든 알고리즘 한 번에 프로파일 (ncu 는 root 필요)
+#   결과: ncu_reports/<algo>.ncu-rep (Nsight Compute UI), <algo>.csv (레벨별 메트릭)
+```
+특정 레벨만 집중: `sudo ncu --set full FFT/build/fft_bench --variant L2 --iters 1`
+
 > roofline 실링은 GPU마다 다르다 — 성능 수치는 실행한 GPU에서 측정해 비교하라.

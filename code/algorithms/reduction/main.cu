@@ -23,10 +23,10 @@ int main(int argc, char** argv) {
     }
 
     std::vector<Variant<ReduceSig>> sel;
-    if (opt.algoKeys.empty()) {
+    if (opt.variants.empty()) {
         sel = all;
     } else {
-        for (const auto& k : opt.algoKeys) {
+        for (const auto& k : opt.variants) {
             bool found = false;
             for (const auto& v : all) if (v.key == k) { sel.push_back(v); found = true; break; }
             if (!found) { std::fprintf(stderr, "unknown algo key: %s (use -l)\n", k.c_str()); return 1; }

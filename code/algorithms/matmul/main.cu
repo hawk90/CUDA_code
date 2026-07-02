@@ -58,6 +58,7 @@ int main(int argc, char** argv) {
 
     double baseMs = -1.0;
     auto bench = [&](const char* name, auto launch) {
+        if (!cliSelected(opt, name)) return;
         launch();
         CHECK_CUDA(cudaGetLastError());
         CHECK_CUDA(cudaDeviceSynchronize());
