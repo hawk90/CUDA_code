@@ -11,3 +11,6 @@
 *.exe
 *.out
 a.out
+
+# ncu profiling reports (generated, large binaries)
+ncu_reports/

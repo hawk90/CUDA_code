@@ -64,7 +64,6 @@ prof spmv        SpMV/build/spmv_bench               --size 32768   --iters 1
 prof fft         FFT/build/fft_bench                 --size 1024    --iters 1
 prof softmax     softmax/build/softmax_bench         --size 2048    --iters 1
 prof attention   attention/build/attention_bench     --size 512     --iters 1
-prof pitfalls    pitfalls/build/pitfalls_bench
 
 echo
 if [[ "$FAILED" -ne 0 ]]; then
